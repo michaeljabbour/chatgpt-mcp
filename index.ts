@@ -12,7 +12,7 @@ import { runAppleScript } from 'run-applescript';
 // Define the ChatGPT tool
 const CHATGPT_TOOL: Tool = {
   name: "chatgpt",
-  description: "Interacts with the ChatGPT macOS desktop application. Use this to send prompts ('ask' operation) or list conversation titles ('get_conversations' operation) directly within the user's ChatGPT app.",
+  description: "Sends prompts to ChatGPT ('ask' operation) or retrieves conversation list ('get_conversations'). For 'ask', optionally specify conversation_id and time_to_wait (seconds, 0=don't retrieve, default=6).",
   inputSchema: {
     type: "object",
     properties: {
