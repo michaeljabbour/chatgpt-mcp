@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-03-29
+
+### Changed
+- Enhanced the tool description in `index.ts` to provide clearer guidance to AI models on when to use the `chatgpt` tool.
+
 ## [1.0.0] - 2025-03-29
 
 ### Added
@@ -16,4 +21,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Switched from `bun` execution to standard `node` and `npm` build process.
-- Made response retrieval optional and wait time configurable in `ask` operation.

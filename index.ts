@@ -12,7 +12,7 @@ import { run } from '@jxa/run';
 // Define the ChatGPT tool
 const CHATGPT_TOOL: Tool = {
   name: "chatgpt",
-  description: "Interact with the ChatGPT desktop app on macOS",
+  description: "Use this tool to interact with the ChatGPT desktop app on macOS **when the user asks you (the AI model) to send prompts, continue conversations, or retrieve information directly from their ChatGPT application.** Allows sending prompts ('ask' operation) and listing conversation titles ('get_conversations' operation).",
   inputSchema: {
     type: "object",
     properties: {

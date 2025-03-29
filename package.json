@@ -1,6 +1,6 @@
 {
   "name": "chatgpt-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An MCP (Model Context Protocol) server providing a tool to interact with the ChatGPT macOS desktop application.",
   "type": "module",
   "main": "build/index.js",
