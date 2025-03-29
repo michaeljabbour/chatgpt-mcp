@@ -7,9 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.5] - 2025-03-29
 
-### Changed
-- Reverted tool description to v1.0.3 state for testing.
-- No code changes to retrieval logic (still using `text area 2...`). Republishing to confirm baseline failure.
+### Fixed
+- Updated AppleScript for response retrieval (`ask` operation) to target `last static text` within the likely scroll area, based on Accessibility Inspector findings. This should fix issues where responses couldn't be retrieved due to UI changes in the ChatGPT app. Added a fallback check for robustness.
 
 ## [1.0.4] - 2025-03-29
 

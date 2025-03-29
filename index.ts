@@ -116,12 +116,19 @@ async function askChatGPT(prompt: string, conversationId?: string, time_to_wait:
             ${waitSeconds > 0 ? `
             delay ${waitSeconds} -- Wait for response based on parameter
 
-            -- Try to get the response (this is approximate and may need adjustments)
+            -- Try to get the response using the last static text in the likely scroll area
             set responseText to ""
             try
-              set responseText to value of text area 2 of group 1 of group 1 of window 1
-            on error
-              set responseText to "Could not retrieve the response from ChatGPT after waiting ${waitSeconds}s."
+              -- Target: last static text within the first scroll area of the first group
+              set responseText to value of last static text of scroll area 1 of group 1 of window 1
+            on error errMsg
+              # If the first attempt fails, try a slightly different common path (e.g., group 2)
+              try
+                set responseText to value of last static text of scroll area 1 of group 2 of window 1
+              on error errMsg2
+                 # Provide a more informative error if both fail
+                 set responseText to "Could not retrieve response. Failed attempts: 'last static text of scroll area 1 of group 1' (" & errMsg & ") and 'last static text of scroll area 1 of group 2' (" & errMsg2 & "). UI might have changed."
+              end try
             end try
             return responseText
             ` : `
