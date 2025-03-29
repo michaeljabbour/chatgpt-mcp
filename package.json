@@ -5,7 +5,7 @@
   "type": "module",
   "main": "build/index.js",
   "bin": {
-    "chatgpt-mcp": "./build/index.js"
+    "chatgpt-mcp": "build/index.js"
   },
   "files": [
     "build",
