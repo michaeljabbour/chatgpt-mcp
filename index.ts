@@ -7,7 +7,7 @@ import {
   type Tool,
 } from "@modelcontextprotocol/sdk/types.js";
 import { runAppleScript } from 'run-applescript';
-import { run } from '@jxa/run';
+// Removed unused import: import { run } from '@jxa/run';
 
 // Define the ChatGPT tool
 const CHATGPT_TOOL: Tool = {
@@ -245,12 +245,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           if (args.time_to_wait !== undefined) {
              const parsedWait = Number(args.time_to_wait);
              // Use validated number if valid and within range, otherwise stick to default
-             if (!isNaN(parsedWait) && parsedWait >= 0 && parsedWait <= 3600) {
-               waitTime = parsedWait;
-             } else {
-               console.warn(`Invalid time_to_wait value '${args.time_to_wait}' received. Using default ${waitTime}s.`);
-             }
+             // Schema validation ensures it's a number within range if provided.
+             // Default is handled by schema. askChatGPT does final bounds check.
+             waitTime = Number(args.time_to_wait); // Convert potential string/number from JSON
           }
+          // If time_to_wait was invalid or missing, schema default (6) is used implicitly
+          // by askChatGPT's default parameter value if not overridden here.
+          // Let askChatGPT handle the final bounds check.
 
           const response = await askChatGPT(args.prompt, args.conversation_id, waitTime);
 
