@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/199-bio/claude-chatgpt-mcp.git"
+    "url": "git+https://github.com/199-bio/chatgpt-mcp.git"
   },
   "keywords": [
     "mcp",
