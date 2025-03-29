@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    /* Base Options: */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "ES2022", // Target modern Node.js versions
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+
+    /* Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitAny": true,
+
+    /* If NOT transpiling code: */
+    "module": "NodeNext",
+    "noEmit": false, // We want to emit compiled JS files
+    "outDir": "./build", // Output directory for compiled files
+
+    /* If your code runs in the DOM: */
+    // "lib": ["es2022", "dom", "dom.iterable"],
+
+    /* If your code doesn't run in the DOM: */
+    "lib": ["ES2022"]
+  },
+  "include": ["index.ts"], // Include source files
+  "exclude": ["node_modules", "build"] // Exclude build output and dependencies
+}

@@ -40,34 +40,23 @@ This server provides the `chatgpt` tool with the following operations:
 **Requirements:**
 *   macOS operating system.
 *   The official ChatGPT desktop application installed.
-*   Node.js and Bun installed (`bun` is used to run the script).
+*   Node.js (which includes `npx`) installed.
 
-### Step 1: Clone the Repository
-
-Clone your fork of the repository to a location on your Mac:
-```bash
-# Replace '199-bio' with your GitHub username if different
-git clone https://github.com/199-bio/claude-chatgpt-mcp.git /path/to/your/desired/location
-cd /path/to/your/desired/location/claude-chatgpt-mcp
-bun install
-```
-Replace `/path/to/your/desired/location` with the actual path where you want to store the server code (e.g., `~/Documents/MCP-Servers`). **Remember this path for the next step.**
-
-### Step 2: Configure Your MCP Client
+### Step 1: Configure Your MCP Client
 
 Add the following JSON block within the `"mcpServers": {}` object in your client's configuration file. Choose the file corresponding to your client and operating system:
 
 **Configuration Block:**
 ```json
 "chatgpt-mac": {
-  "command": "bun",
-  "args": ["run", "/path/to/your/cloned/repo/claude-chatgpt-mcp/index.ts"],
+  "command": "npx",
+  "args": ["chatgpt-mcp"],
   "env": {},
   "disabled": false,
   "autoApprove": []
 }
 ```
-**IMPORTANT:** Replace `/path/to/your/cloned/repo/claude-chatgpt-mcp` in the `"args"` array with the **full, absolute path** to the directory where you cloned the repository in Step 1.
+*(Note: If the package name `chatgpt-mcp` is unavailable on npm, you might need to use a scoped name like `@your-npm-username/chatgpt-mcp` in the future. The configuration would then change to `"args": ["@your-npm-username/chatgpt-mcp"]`)*
 
 **Client Configuration File Locations:**
 *   **Claude Desktop:**
@@ -86,9 +75,9 @@ Add the following JSON block within the `"mcpServers": {}` object in your client
 *   **Other Clients:**
     *   Consult the specific client's documentation for the location of its MCP configuration file. The JSON structure shown in the "Configuration Block" above should generally work.
 
-### Step 3: Restart Client
+### Step 2: Restart Client
 
-After adding the configuration block and saving the file, **fully restart** your MCP client application for the changes to take effect. The server will now run directly from your cloned repository using `bun`.
+After adding the configuration block and saving the file, **fully restart** your MCP client application for the changes to take effect. The first time the client starts the server, `npx` will automatically download the `chatgpt-mcp` package from npm (once it's published) if it's not already cached.
 
 ## Usage Example
 
@@ -105,7 +94,7 @@ Or to get conversations:
 
 ## Developed By
 
-This tool was adapted and modified by Boris Djordjevic based on the original work by Syed Azhar (https://github.com/syedazharmbnr1/claude-chatgpt-mcp).
+This tool was adapted and modified by 199-bio based on the original work by Syed Azhar.
 
 Further development inspired by initiatives at [199 Longevity](https://www.199.company), a group focused on extending the frontiers of human health and longevity. Learn more about our work in biotechnology at [199.bio](https://www.199.bio).
 
@@ -113,4 +102,4 @@ Project contributor: Boris Djordjevic
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
