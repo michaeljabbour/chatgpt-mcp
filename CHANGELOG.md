@@ -5,10 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.5] - 2025-03-29
+## [1.0.7] - 2025-03-29
 
-### Fixed
-- Updated AppleScript for response retrieval (`ask` operation) to target `last static text` within the likely scroll area, based on Accessibility Inspector findings. This should fix issues where responses couldn't be retrieved due to UI changes in the ChatGPT app. Added a fallback check for robustness.
+### Changed
+- Aligned internal server version in `index.ts` with `package.json`. (Skipped intermediate versions).
 
 ## [1.0.4] - 2025-03-29
 
