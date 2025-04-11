@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+// At the very top of index.ts, before any other imports or logic:
+if (process.env.NODE_ENV === "production") {
+  console.log = console.error;
+}
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -10,7 +14,7 @@ import { runAppleScript } from 'run-applescript';
 // Removed unused import: import { run } from '@jxa/run';
 
 // Define the ChatGPT tool
-const CHATGPT_TOOL: Tool = {
+const CHATGPT_TOOL = {
   name: "chatgpt",
   description: "Sends prompts to ChatGPT ('ask' operation) or retrieves conversation list ('get_conversations'). For 'ask', optionally specify conversation_id and time_to_wait (seconds, 0=don't retrieve, default=6).",
   inputSchema: {
@@ -221,7 +225,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [CHATGPT_TOOL],
 }));
 
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
+server.setRequestHandler(CallToolRequestSchema, async (request: any) => {
   try {
     const { name, arguments: args } = request.params;
 
